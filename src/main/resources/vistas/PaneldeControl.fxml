@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="720" prefWidth="1280" stylesheets="@../estilos/paneldecontrol.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaneldeControlController">
+
+    <BorderPane styleClass="dashboard-root">
+        
+        <left>
+            <VBox prefWidth="220" styleClass="sidebar">
+                <padding>
+                    <Insets bottom="20" left="10" right="10" top="20" />
+                </padding>
+                
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <padding>
+                        <Insets bottom="30" left="10" />
+                    </padding>
+               <ImageView fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../img/Logo%20FT.png" />
+                  </image>
+               </ImageView>
+                    <Label styleClass="sidebar-title" text="FinanceTracker" />
+                </HBox>
+                
+                <VBox spacing="5" VBox.vgrow="ALWAYS">
+                    
+                    <Button fx:id="btnPanelDeControl" onAction="#verPaneldeControl" prefWidth="200" styleClass="menu-button, menu-button-active" text="Panel de Control">
+                        <graphic>
+                            <Label styleClass="menu-icon" text="▦" />
+                        </graphic>
+                    </Button>
+                    
+                    <Button fx:id="btnTransacciones" onAction="#verTransacciones" prefWidth="200" styleClass="menu-button" text="Transacciones">
+                        <graphic>
+                            <Label styleClass="menu-icon" text="≡" />
+                        </graphic>
+                    </Button>
+                    
+                    <Button fx:id="btnEstadisticas" onAction="#verEstadisticas" prefWidth="200" styleClass="menu-button" text="Estadísticas">
+                        <graphic>
+                            <Label styleClass="menu-icon" text="📊" />
+                        </graphic>
+                    </Button>
+                    
+                    <Button fx:id="btnPresupuestos" onAction="#verPresupuestos" prefWidth="200" styleClass="menu-button" text="Presupuestos">
+                        <graphic>
+                            <Label styleClass="menu-icon" text="💰" />
+                        </graphic>
+                    </Button>
+                    
+                    <Button fx:id="btCuentas" onAction="#verCuentas" prefWidth="200" styleClass="menu-button" text="Cuentas">
+                        <graphic>
+                            <Label styleClass="menu-icon" text="🏦" />
+                        </graphic>
+                    </Button>
+                    
+                    <Button fx:id="btnConfiguracion" onAction="#verAjustes" prefWidth="200" styleClass="menu-button" text="Configuración">
+                        <graphic>
+                            <Label styleClass="menu-icon" text="⚙" />
+                        </graphic>
+                    </Button>
+                    
+                </VBox>
+                
+                <Button fx:id="btnCerrarSesion" onAction="#cerrarSesion" prefWidth="200" styleClass="logout-button" text="Cerrar sesión">
+                    <graphic>
+                        <Label styleClass="menu-icon" text="→" />
+                    </graphic>
+                </Button>
+                
+            </VBox>
+        </left>
+        
+        <center>
+            <VBox styleClass="main-content">
+                
+                <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header">
+                    <padding>
+                        <Insets bottom="20" left="30" right="30" top="20" />
+                    </padding>
+                    
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelBienvenida" styleClass="greeting-text" text="Hola, Hugo" />
+                        <Label fx:id="labelFecha" styleClass="date-text" text="Jueves, 30 de Octubre 2025" />
+                    </VBox>
+                    
+                    <ComboBox fx:id="comboCuenta" prefWidth="200" promptText="Selecciona cuenta" styleClass="account-selector" />
+                    
+                    <HBox alignment="CENTER" spacing="15">
+                        <Button prefHeight="48.0" prefWidth="48.0" styleClass="icon-button" text="🔔" />
+                        <Label prefHeight="41.0" prefWidth="41.0" styleClass="profile-avatar" text="H" textAlignment="RIGHT" />
+                    </HBox>
+                    
+                </HBox>
+                
+                <HBox spacing="20" styleClass="stats-container">
+                    <padding>
+                        <Insets bottom="20" left="30" right="30" top="20" />
+                    </padding>
+                    
+                    <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="20" left="20" right="20" top="20" />
+                        </padding>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label styleClass="stat-icon-income" text="📈" />
+                            <Label styleClass="stat-label" text="INGRESOS DEL MES" />
+                        </HBox>
+                        <Label fx:id="labelIngresos" styleClass="stat-value" text="2.500,00 €">
+                            <padding>
+                                <Insets top="15" />
+                            </padding>
+                        </Label>
+                    </VBox>
+                    
+                    <VBox fx:id="labelGastos" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="20" left="20" right="20" top="20" />
+                        </padding>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label styleClass="stat-icon-expense" text="📉" />
+                            <Label styleClass="stat-label" text="GASTOS DEL MES" />
+                        </HBox>
+                        <Label fx:id="expenseLabel" styleClass="stat-value" text="1.450,00 €">
+                            <padding>
+                                <Insets top="15" />
+                            </padding>
+                        </Label>
+                    </VBox>
+                    
+                    <VBox fx:id="labelBalance" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="20" left="20" right="20" top="20" />
+                        </padding>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label styleClass="stat-icon" text="🧮" />
+                            <Label styleClass="stat-label" text="BALANCE ACTUAL" />
+                        </HBox>
+                        <Label fx:id="balanceLabel" styleClass="stat-value" text="1.050,00 €">
+                            <padding>
+                                <Insets top="15" />
+                            </padding>
+                        </Label>
+                    </VBox>
+                    
+                    <VBox fx:id="labelSaldo" styleClass="stat-card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="20" left="20" right="20" top="20" />
+                        </padding>
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label styleClass="stat-icon" text="💼" />
+                            <Label styleClass="stat-label" text="SALDO EN CUENTAS" />
+                        </HBox>
+                        <Label fx:id="accountBalanceLabel" styleClass="stat-value" text="3.200,00 €">
+                            <padding>
+                                <Insets top="15" />
+                            </padding>
+                        </Label>
+                    </VBox>
+                    
+                </HBox>
+                
+                <HBox spacing="20" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="20" left="30" right="30" top="0" />
+                    </padding>
+                    
+                    <VBox styleClass="chart-card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="20" left="20" right="20" top="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label styleClass="chart-title" text="Evolución Mensual" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <HBox spacing="10">
+                                <Label style="-fx-text-fill: #00d9a3;" text="●" />
+                                <Label styleClass="legend-text" text="Ingresos" />
+                                <Label style="-fx-text-fill: #ff453a;" text="●" />
+                                <Label styleClass="legend-text" text="Gastos" />
+                            </HBox>
+                        </HBox>
+                        
+                        <Label styleClass="chart-subtitle" text="Últimos 6 meses" />
+                        
+                        <LineChart fx:id="graficoEvolucion" legendVisible="false" VBox.vgrow="ALWAYS">
+                            <xAxis>
+                                <CategoryAxis />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis />
+                            </yAxis>
+                        </LineChart>
+                    </VBox>
+                    
+                    <VBox styleClass="chart-card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="20" left="20" right="20" top="20" />
+                        </padding>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label styleClass="chart-title" text="Gastos por Categoría" />
+                        </HBox>
+                        
+                        <Label styleClass="chart-subtitle" text="Distribución mensual" />
+                        
+                        <PieChart fx:id="graficoCategoria" legendSide="RIGHT" legendVisible="true" styleClass="pie-chart" VBox.vgrow="ALWAYS" />
+                    </VBox>
+                    
+                </HBox>
+                
+                <VBox styleClass="transactions-card">
+                    <padding>
+                        <Insets bottom="30" left="30" right="30" top="20" />
+                    </padding>
+                    
+                    <HBox alignment="CENTER_LEFT">
+                        <Label styleClass="section-title" text="Transacciones Recientes" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Hyperlink fx:id="linkVerTodas" onAction="#showAllTransactions" styleClass="view-all-link" text="Ver todas" />
+                    </HBox>
+                    
+                    <StackPane fx:id="graficoTransacciones" styleClass="table-placeholder" VBox.vgrow="ALWAYS">
+                        <Label styleClass="placeholder-text" text="TABLA CON LAS TRANSACCIONES" />
+                    </StackPane>
+                    
+                </VBox>
+                
+            </VBox>
+        </center>
+        
+    </BorderPane>
+    
+    <Button fx:id="btnFlotante" onAction="#handleAddTransaction" styleClass="fab-button" text="+" StackPane.alignment="BOTTOM_RIGHT">
+        <StackPane.margin>
+            <Insets bottom="40" right="40" />
+        </StackPane.margin>
+    </Button>
+    
+</StackPane>
