@@ -22,3 +22,6 @@ Thumbs.db
 financetracker.db
 
 *.log
+
+src/main/resources/database.properties
+
