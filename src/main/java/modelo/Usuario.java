@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  *
  * @author hugob
  */
-public class Usuarios {
+public class Usuario {
     
     public enum Role{
         USUARIO, ADMIN
@@ -25,7 +25,7 @@ public class Usuarios {
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaActualizacion;
 
-    public Usuarios(int idUsuario, String usuario, String email, String nombreCompleto, String password, Role role, LocalDateTime fechaCreacion, LocalDateTime fechaActualizacion) {
+    public Usuario(int idUsuario, String usuario, String email, String nombreCompleto, String password, Role role, LocalDateTime fechaCreacion, LocalDateTime fechaActualizacion) {
         this.idUsuario = idUsuario;
         this.usuario = usuario;
         this.email = email;
@@ -36,7 +36,7 @@ public class Usuarios {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public Usuarios(String usuario, String email, String nombreCompleto, String password, Role role) {
+    public Usuario(String usuario, String email, String nombreCompleto, String password, Role role) {
         this.usuario = usuario;
         this.email = email;
         this.nombreCompleto = nombreCompleto;
@@ -46,7 +46,7 @@ public class Usuarios {
     
     
 
-    public Usuarios() {
+    public Usuario() {
     }
 
     public int getIdUsuario() {
